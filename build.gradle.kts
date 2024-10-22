@@ -15,8 +15,11 @@ repositories {
 
 dependencies {
     implementation ("org.springframework.boot:spring-boot-starter-web:3.3.4")
+    implementation("org.springframework.boot:spring-boot-starter-jdbc:3.3.4")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     testImplementation("org.jetbrains.kotlin:kotlin-test")
+    implementation("org.postgresql:postgresql:42.7.2")
+    implementation("com.opencsv:opencsv:5.7.1")
 }
 
 tasks.test {

@@ -17,6 +17,12 @@ class HelloController(private val productService: ProductService) {
     @GetMapping("/import/one-by-one")
     fun importOneByOne(): String {
         val time = productService.importProductsOneByOne("./src/main/resources/products.csv")
-        return "Importing products one by one... took ${time/1000} s"
+        return time.toString()
+    }
+
+    @GetMapping("/import/sql-batch")
+    fun importSqlBatch(): String {
+        val time = productService.importProductsInBatches("./src/main/resources/products.csv", 50000)
+        return time.toString()
     }
 }

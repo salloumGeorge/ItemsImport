@@ -25,4 +25,10 @@ class HelloController(private val productService: ProductService) {
         val time = productService.importProductsInBatches("./src/main/resources/products.csv", 50000)
         return time.toString()
     }
+
+    @GetMapping("/import/sql-batch-parallel")
+    fun importSqlBatchParallel(): String {
+        val time = productService.importProductsInParallelBatches("./src/main/resources/products.csv", 50000)
+        return time.toString()
+    }
 }

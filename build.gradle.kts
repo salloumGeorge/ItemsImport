@@ -16,6 +16,7 @@ repositories {
 dependencies {
     implementation ("org.springframework.boot:spring-boot-starter-web:3.3.4")
     implementation("org.springframework.boot:spring-boot-starter-jdbc:3.3.4")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     testImplementation("org.jetbrains.kotlin:kotlin-test")
     implementation("org.postgresql:postgresql:42.7.2")

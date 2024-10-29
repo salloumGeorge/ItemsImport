@@ -44,3 +44,5 @@ bin/
 /.idea
 
 /src/main/resources/products.csv
+
+todo.md

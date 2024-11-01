@@ -5,12 +5,21 @@ import org.george.model.Product
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.stereotype.Service
 import java.io.FileReader
+import java.time.Instant
+import java.time.ZoneOffset
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 @Service
 class SingleFileImport(private val jdbcTemplate: JdbcTemplate) {
 
     public fun importSingle(csvFilePath: String): ImportResult {
+
+        val startMark: String = DateTimeFormatter
+            .ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS")
+            .withZone(ZoneOffset.UTC)
+            .format(Instant.now())
+
         val reader = CSVReader(FileReader(csvFilePath))
         val records = reader.readAll()
         val startTime = System.currentTimeMillis()
@@ -44,7 +53,7 @@ class SingleFileImport(private val jdbcTemplate: JdbcTemplate) {
         val endTime = System.currentTimeMillis()
         val time = endTime - startTime
         reader.close()
-        return ImportResult(count, time, totalExecutionTime.toDouble() / count.toDouble());
+        return ImportResult(count, time, totalExecutionTime.toDouble() / count.toDouble(), startMark);
     }
 }
 

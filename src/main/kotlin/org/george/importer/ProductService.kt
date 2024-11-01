@@ -1,6 +1,5 @@
 package org.george.importer
 
-import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.stereotype.Service
 
 @Service
@@ -18,7 +17,7 @@ class ProductService(
         return batchImport.import(csvFilePath, batchSize)
     }
 
-    fun importProductsInParallelBatches(filePath: String, batchSize: Int): Any {
+    fun importProductsInParallelBatches(filePath: String, batchSize: Int): ImportResult {
         return threadBatchImport.importProductsInParallelBatches(filePath, batchSize)
     }
 

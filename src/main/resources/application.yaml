@@ -5,6 +5,12 @@ spring:
     password: password
     data:
       schema: classpath:schema.sql
-  sql:
+
+    hikari:
+      maximum-pool-size: 20
+
     init:
       mode: NEVER
+
+
+

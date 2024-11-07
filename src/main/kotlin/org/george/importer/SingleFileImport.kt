@@ -53,7 +53,7 @@ class SingleFileImport(private val jdbcTemplate: JdbcTemplate) {
         val endTime = System.currentTimeMillis()
         val time = endTime - startTime
         reader.close()
-        return ImportResult(count, time, totalExecutionTime.toDouble() / count.toDouble(), startMark);
+        return ImportResult(count, time, totalExecutionTime.toDouble() / count.toDouble(), startMark, 0L);
     }
 }
 

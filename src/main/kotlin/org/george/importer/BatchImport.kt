@@ -19,11 +19,15 @@ class BatchImport(private val jdbcTemplate: JdbcTemplate) {
             .withZone(ZoneOffset.UTC)
             .format(Instant.now())
 
+        val fileProcessStart = System.currentTimeMillis()
+
 
         val reader = CSVReader(FileReader(csvFilePath))
         val records = reader.readAll()
         records.removeAt(0)
         val startTime = System.currentTimeMillis()
+
+        val fileProcessTime = startTime - fileProcessStart;
 
         var count = 0;
         var totalExecutionTime = 0L;
@@ -49,6 +53,6 @@ class BatchImport(private val jdbcTemplate: JdbcTemplate) {
         val endTime = System.currentTimeMillis()
         val time = endTime - startTime
         reader.close()
-        return ImportResult(count, time, totalExecutionTime.toDouble()/count.toDouble(), startMark)
+        return ImportResult(count, time, totalExecutionTime.toDouble()/count.toDouble(), startMark, fileProcessTime)
     }
 }
